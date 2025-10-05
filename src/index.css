@@ -1,0 +1,35 @@
+/* Syntax highlighting for code blocks */
+@import 'highlight.js/styles/github-dark.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-github-border-default dark:border-github-border-dark;
+  }
+
+  body {
+    @apply bg-github-canvas-default dark:bg-github-canvas-dark text-github-fg-default dark:text-github-fg-dark;
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .github-card {
+    @apply bg-white dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-lg shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .github-btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+  }
+
+  .github-btn-primary {
+    @apply bg-github-accent-emphasis text-white hover:bg-blue-700;
+  }
+
+  .github-btn-secondary {
+    @apply bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark hover:bg-gray-100 dark:hover:bg-gray-700;
+  }
+}
