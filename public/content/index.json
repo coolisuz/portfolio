@@ -1,0 +1,40 @@
+{
+  "case-studies": [
+    {
+      "id": "trading-platform",
+      "title": "Stock Trading Platform"
+    },
+    {
+      "id": "lead-gen-platform",
+      "title": "Lead Generation Platform"
+    },
+    {
+      "id": "automotive-erp",
+      "title": "Automotive ERP System"
+    }
+  ],
+  "architecture": [
+    {
+      "id": "trading-architecture",
+      "title": "Trading Platform Architecture"
+    },
+    {
+      "id": "lead-routing",
+      "title": "Real-time Lead Routing"
+    },
+    {
+      "id": "erp-integration",
+      "title": "ERP Integration Layer"
+    }
+  ],
+  "articles": [
+    {
+      "id": "optimizing-api-latency",
+      "title": "Optimizing API Latency"
+    },
+    {
+      "id": "event-driven-architecture",
+      "title": "Event-Driven Systems with Kafka"
+    }
+  ]
+}
