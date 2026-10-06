@@ -47,6 +47,13 @@ export const translations: Record<Language, Translation> = {
             'Multicard. Real-time creditworthiness checks for 50+ business clients, 20% fewer loan defaults, and payment microservices behind an Istio mesh.',
           meta: '2018 to 2020',
         },
+        {
+          title: 'Answer, match and transfer in one call',
+          description:
+            'Side project. A voice agent qualifies the caller, matches by service and postal code, and transfers live. Billing from a prepaid wallet.',
+          meta: 'Personal project',
+          linkLabel: 'Case study',
+        },
       ],
       writing: {
         all: 'All posts',
@@ -118,6 +125,13 @@ export const translations: Record<Language, Translation> = {
             'Multicard. Проверка кредитоспособности в реальном времени для 50+ бизнес-клиентов, на 20% меньше дефолтов по кредитам и платёжные микросервисы за сервисной сеткой Istio.',
           meta: '2018 — 2020',
         },
+        {
+          title: 'Ответить, подобрать и перевести за один звонок',
+          description:
+            'Личный проект. Голосовой агент квалифицирует звонящего, подбирает исполнителя по услуге и почтовому индексу и переводит звонок вживую. Оплата с предоплаченного кошелька.',
+          meta: 'Личный проект',
+          linkLabel: 'Кейс',
+        },
       ],
       writing: {
         all: 'Все записи',
@@ -188,6 +202,13 @@ export const translations: Record<Language, Translation> = {
           description:
             'Multicard. 50 dan ortiq biznes mijoz uchun real vaqtda kreditga layoqatlilikni tekshirish, kredit defoltlari 20% ga kamaygan, toʻlov mikroservislari Istio service mesh ortida.',
           meta: '2018 — 2020',
+        },
+        {
+          title: 'Bitta qoʻngʻiroqda: javob, moslash va ulash',
+          description:
+            'Shaxsiy loyiha. Ovozli agent qoʻngʻiroq qiluvchini saralaydi, xizmat turi va pochta indeksi boʻyicha ijrochini topadi va qoʻngʻiroqni jonli ulaydi. Toʻlov oldindan toʻldirilgan hamyondan.',
+          meta: 'Shaxsiy loyiha',
+          linkLabel: 'Keys',
         },
       ],
       writing: {

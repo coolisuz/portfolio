@@ -44,6 +44,7 @@ export const pinned: PinnedItem[] = [
   { tags: ['node.js', 'redis', 'rabbitmq', 'sip'], badge: 'private', post: 'leads-to-redis' },
   { tags: ['websockets', 'redis', 'kubernetes'], badge: 'private', post: 'trading-platform' },
   { tags: ['node.js', 'kubernetes', 'istio'], badge: 'private' },
+  { tags: ['nestjs', 'postgresql', 'telnyx', 'stripe'], badge: 'caseStudy', post: 'live-call-routing' },
 ];
 
 /** `current` marks the highlighted dot on the timeline. */
