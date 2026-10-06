@@ -14,6 +14,12 @@
     --site-rule: 217 220 224;
     --site-wash: 245 246 247;
     --site-accent: 11 110 79;
+    /* Contribution graph levels, none to most */
+    --site-g0: 233 235 238;
+    --site-g1: 191 227 208;
+    --site-g2: 124 199 164;
+    --site-g3: 47 158 111;
+    --site-g4: 11 110 79;
   }
 
   .dark {
@@ -23,6 +29,11 @@
     --site-rule: 43 48 54;
     --site-wash: 21 24 27;
     --site-accent: 111 214 168;
+    --site-g0: 27 31 35;
+    --site-g1: 15 61 46;
+    --site-g2: 23 105 76;
+    --site-g3: 47 166 117;
+    --site-g4: 111 214 168;
   }
 
   * {

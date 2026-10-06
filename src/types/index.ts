@@ -32,6 +32,7 @@ export interface Translation {
     certification: string;
     sections: {
       pinned: string;
+      activity: string;
       writing: string;
       experience: string;
       education: string;
@@ -40,6 +41,12 @@ export interface Translation {
     badges: {
       private: string;
       caseStudy: string;
+    };
+    activity: {
+      /** `{count}` is replaced with the year's total */
+      caption: string;
+      less: string;
+      more: string;
     };
     /** Same order as `pinned` in src/data/profile.ts */
     pinned: PinnedCopy[];

@@ -17,10 +17,16 @@ export const translations: Record<Language, Translation> = {
       certification: 'aws certified developer, associate',
       sections: {
         pinned: 'Pinned',
+        activity: 'Activity',
         writing: 'Writing',
         experience: 'Experience',
         education: 'Education and certification',
         contact: 'Contact',
+      },
+      activity: {
+        caption: '{count} contributions on GitHub in the last year,',
+        less: 'Less',
+        more: 'More',
       },
       badges: {
         private: 'Private',
@@ -95,10 +101,16 @@ export const translations: Record<Language, Translation> = {
       certification: 'aws certified developer, associate',
       sections: {
         pinned: 'Закреплено',
+        activity: 'Активность',
         writing: 'Блог',
         experience: 'Опыт',
         education: 'Образование и сертификация',
         contact: 'Контакты',
+      },
+      activity: {
+        caption: 'Вклад на GitHub за последний год: {count},',
+        less: 'Меньше',
+        more: 'Больше',
       },
       badges: {
         private: 'Закрытый код',
@@ -173,10 +185,16 @@ export const translations: Record<Language, Translation> = {
       certification: 'aws certified developer, associate',
       sections: {
         pinned: 'Tanlangan',
+        activity: 'Faollik',
         writing: 'Blog',
         experience: 'Tajriba',
         education: 'Taʼlim va sertifikat',
         contact: 'Aloqa',
+      },
+      activity: {
+        caption: 'Soʻnggi bir yilda GitHubdagi hissalar: {count},',
+        less: 'Kam',
+        more: 'Koʻp',
       },
       badges: {
         private: 'Yopiq kod',

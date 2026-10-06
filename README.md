@@ -19,6 +19,7 @@ A place to know a bit more about me and my work — and where I occasionally jot
 - Code syntax highlighting
 - GitHub-style UI: README intro, pinned work, writing list, experience timeline
 - Posts are linkable: `/blog?post=<id>`
+- GitHub contribution graph, refreshed daily by the deploy workflow (`scripts/fetch-contributions.mjs`)
 
 ## Tech Stack
 
