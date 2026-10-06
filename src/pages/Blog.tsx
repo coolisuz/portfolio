@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { BlogSidebar } from '../components/BlogSidebar';
 import { MarkdownContent } from '../components/MarkdownContent';
 import { loadContentCached, loadContentIndex, ContentItem } from '../utils/contentLoader';
 
 export const Blog = () => {
-  const [selectedItem, setSelectedItem] = useState<string>('trading-platform');
+  // The open post lives in the URL (/blog?post=<id>) so posts can be linked to.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedItem = searchParams.get('post') || 'trading-platform';
   const [content, setContent] = useState<ContentItem | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -52,7 +55,7 @@ export const Blog = () => {
   }, [selectedItem]);
 
   const handleSelectItem = (id: string) => {
-    setSelectedItem(id);
+    setSearchParams({ post: id });
     setSidebarOpen(false);
   };
 

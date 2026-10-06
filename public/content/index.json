@@ -1,6 +1,10 @@
 {
   "case-studies": [
     {
+      "id": "leads-to-redis",
+      "title": "Moving 45,000 Live Leads from Memory to Redis"
+    },
+    {
       "id": "trading-platform",
       "title": "Stock Trading Platform"
     },

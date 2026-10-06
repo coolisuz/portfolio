@@ -1,27 +1,25 @@
-import { lazy, Suspense } from 'react';
-import { Hero } from '../components/Hero';
-import { Philosophy } from '../components/Principles';
-
-const Skills = lazy(() => import('../components/Skills').then(m => ({ default: m.Skills })));
-const Experience = lazy(() => import('../components/Experience').then(m => ({ default: m.Experience })));
-
-const LoadingSection = () => (
-  <div className="flex items-center justify-center py-20">
-    <div className="w-12 h-12 border-4 border-github-accent-emphasis border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Pinned } from '../components/Pinned';
+import { Readme } from '../components/Readme';
+import { Timeline } from '../components/Timeline';
+import { WritingList } from '../components/WritingList';
 
 export const Home = () => {
+  const { hash } = useLocation();
+
+  // Arriving from another page with /#work or /#experience: scroll to that section.
+  useEffect(() => {
+    if (!hash) return;
+    document.getElementById(hash.slice(1))?.scrollIntoView();
+  }, [hash]);
+
   return (
-    <>
-      <Hero />
-      <Philosophy />
-      <Suspense fallback={<LoadingSection />}>
-        <Skills />
-      </Suspense>
-      <Suspense fallback={<LoadingSection />}>
-        <Experience />
-      </Suspense>
-    </>
+    <div className="mx-auto max-w-[920px] px-6 pt-24">
+      <Readme />
+      <Pinned />
+      <WritingList />
+      <Timeline />
+    </div>
   );
 };

@@ -35,6 +35,22 @@ export const MarkdownContent = ({ content }: MarkdownContentProps) => {
               </code>
             );
           },
+          p: ({ children }) => <p className="my-4 leading-relaxed">{children}</p>,
+          table: ({ children }) => (
+            <div className="my-6 overflow-x-auto">
+              <table className="w-full min-w-[480px] border-collapse text-left text-base">{children}</table>
+            </div>
+          ),
+          th: ({ children }) => (
+            <th className="border-b border-github-fg-muted dark:border-github-fg-dark-muted py-2 pr-4 font-semibold">
+              {children}
+            </th>
+          ),
+          td: ({ children }) => (
+            <td className="border-b border-github-border-default dark:border-github-border-dark py-2 pr-4 align-top">
+              {children}
+            </td>
+          ),
           h1: ({ children }) => (
             <h1 className="text-4xl font-bold mb-6 mt-8 pb-3 border-b border-github-border-default dark:border-github-border-dark">
               {children}

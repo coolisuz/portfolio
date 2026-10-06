@@ -1,10 +1,13 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
-import { Blog } from './pages/Blog';
+
+// The blog pulls in the Markdown renderer and syntax highlighter, so it loads on demand.
+const Blog = lazy(() => import('./pages/Blog').then((m) => ({ default: m.Blog })));
 
 function App() {
   return (
@@ -14,10 +17,12 @@ function App() {
           <div className="min-h-screen flex flex-col">
             <Navigation />
             <main className="flex-grow">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/blog" element={<Blog />} />
-              </Routes>
+              <Suspense fallback={null}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/blog" element={<Blog />} />
+                </Routes>
+              </Suspense>
             </main>
             <Footer />
           </div>
