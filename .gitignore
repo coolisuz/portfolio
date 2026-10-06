@@ -10,6 +10,9 @@ node_modules
 /build
 /dist
 
+# Written at deploy time by scripts/fetch-contributions.mjs
+/public/contributions.json
+
 # Misc
 .DS_Store
 .env.local

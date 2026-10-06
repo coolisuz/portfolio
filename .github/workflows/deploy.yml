@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Daily rebuild so the contribution graph on the home page stays current
+  schedule:
+    - cron: '17 3 * * *'
 
 permissions:
   contents: read
@@ -21,6 +24,15 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # Writes public/contributions.json for the Activity section. A failed fetch
+      # only hides that section; it never blocks the deploy.
+      - name: Fetch GitHub contribution calendar
+        run: node scripts/fetch-contributions.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
       - run: npm run build
 
       # GitHub Pages has no rewrites, so serve the app shell for client-side routes like /blog

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Activity } from '../components/Activity';
 import { Pinned } from '../components/Pinned';
 import { Readme } from '../components/Readme';
 import { Timeline } from '../components/Timeline';
@@ -18,6 +19,7 @@ export const Home = () => {
     <div className="mx-auto max-w-[920px] px-6 pt-24">
       <Readme />
       <Pinned />
+      <Activity />
       <WritingList />
       <Timeline />
     </div>
