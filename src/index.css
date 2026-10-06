@@ -6,12 +6,31 @@
 @tailwind utilities;
 
 @layer base {
+  /* Site palette as RGB channels (see tailwind.config.js -> colors.site) */
+  :root {
+    --site-bg: 255 255 255;
+    --site-fg: 17 19 21;
+    --site-muted: 91 97 104;
+    --site-rule: 217 220 224;
+    --site-wash: 245 246 247;
+    --site-accent: 11 110 79;
+  }
+
+  .dark {
+    --site-bg: 14 16 18;
+    --site-fg: 232 234 237;
+    --site-muted: 154 161 169;
+    --site-rule: 43 48 54;
+    --site-wash: 21 24 27;
+    --site-accent: 111 214 168;
+  }
+
   * {
     @apply border-github-border-default dark:border-github-border-dark;
   }
 
   body {
-    @apply bg-github-canvas-default dark:bg-github-canvas-dark text-github-fg-default dark:text-github-fg-dark;
+    @apply bg-site-bg text-site-fg antialiased;
     @apply transition-colors duration-200;
   }
 }

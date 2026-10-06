@@ -17,7 +17,8 @@ A place to know a bit more about me and my work — and where I occasionally jot
 - Responsive design
 - Blog with case studies, architecture docs, and articles
 - Code syntax highlighting
-- GitHub-style UI
+- GitHub-style UI: README intro, pinned work, writing list, experience timeline
+- Posts are linkable: `/blog?post=<id>`
 
 ## Tech Stack
 
@@ -69,6 +70,8 @@ tags: [React, TypeScript]
 
 3. Update `/public/content/index.json` with the new entry
 
+Home page copy (headline, pinned cards, experience) lives in `src/i18n/translations.ts`, one block per language; links, stack tags and which post a card opens are in `src/data/profile.ts`.
+
 4. Refresh browser - no code changes needed!
 
 ## Project Structure
@@ -80,6 +83,7 @@ portfolio/
 ├── src/
 │   ├── components/       # React components
 │   ├── contexts/         # Theme & Language contexts
+│   ├── data/             # Language-independent profile data
 │   ├── i18n/             # Translations
 │   ├── pages/            # Page components
 │   ├── types/            # TypeScript types
@@ -89,4 +93,4 @@ portfolio/
 
 ## License
 
-© 2025 Saidjamol Ikramov. All rights reserved.
+© 2026 Saidjamol Ikramov. All rights reserved.

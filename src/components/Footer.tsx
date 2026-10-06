@@ -1,33 +1,33 @@
 import { useLanguage } from '../contexts/LanguageContext';
+import { contact } from '../data/profile';
+
+const linkClass =
+  'inline-flex min-h-[44px] items-center underline decoration-1 underline-offset-[3px] hover:text-site-accent';
 
 export const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-gray-400 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-center md:text-left">
-            <p className="font-medium">{t.footer.copyright}</p>
-          </div>
-          <div className="flex gap-6">
-            <a
-              href="https://github.com/coolisuz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
+    <footer id="contact" className="mx-auto w-full max-w-[920px] px-6">
+      <div className="flex flex-wrap gap-x-10 gap-y-4 border-t border-site-rule pb-16 pt-10">
+        <h2 className="w-40 shrink-0 font-mono text-[13px] font-medium uppercase leading-[44px] tracking-wider text-site-muted">
+          {t.home.sections.contact}
+        </h2>
+
+        <div className="min-w-0 max-w-[680px] flex-[999_1_420px]">
+          <div className="flex flex-wrap gap-x-7">
+            <a href={`mailto:${contact.email}`} className={linkClass}>
+              {contact.email}
+            </a>
+            <a href={contact.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
               GitHub
             </a>
-            <a
-              href="https://linkedin.com/in/saidjamol-ikramov"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>
               LinkedIn
             </a>
           </div>
+
+          <p className="mt-5 font-mono text-xs text-site-muted">{t.footer.copyright}</p>
         </div>
       </div>
     </footer>

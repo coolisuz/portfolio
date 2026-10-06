@@ -1,85 +1,83 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Language } from '../types';
+
+const linkClass =
+  'inline-flex min-h-[44px] items-center text-[15px] text-site-fg hover:text-site-accent transition-colors';
+
+const controlClass =
+  'rounded-md border border-site-rule bg-site-wash hover:border-site-muted transition-colors';
 
 export const Navigation = () => {
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const onBlog = location.pathname === '/blog';
 
-  const scrollToSection = (id: string) => {
+  // Home sections are reached by hash; Home scrolls to it when it mounts or the hash changes.
+  const goToSection = (id: string) => {
     setMobileMenuOpen(false);
-    if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
+    if (location.pathname === '/') {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       return;
     }
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate(`/#${id}`);
   };
 
+  const items = (
+    <>
+      <button type="button" onClick={() => goToSection('work')} className={linkClass}>
+        {t.nav.work}
+      </button>
+      <Link
+        to="/blog"
+        onClick={() => setMobileMenuOpen(false)}
+        aria-current={onBlog ? 'page' : undefined}
+        className={`${linkClass} ${onBlog ? 'underline decoration-1 underline-offset-[6px]' : ''}`}
+      >
+        {t.nav.writing}
+      </Link>
+      <button type="button" onClick={() => goToSection('experience')} className={linkClass}>
+        {t.nav.experience}
+      </button>
+    </>
+  );
+
   return (
-    <nav className="fixed top-0 w-full bg-github-canvas-default/95 dark:bg-github-canvas-dark/95 backdrop-blur-sm border-b border-github-border-default dark:border-github-border-dark z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
-            <Link
-              to="/"
-              className="text-2xl font-bold text-github-fg-default dark:text-github-fg-dark hover:text-github-accent-emphasis transition-colors"
-            >
-              SI
-            </Link>
-          </div>
+    <nav
+      aria-label="Main"
+      className="fixed top-0 z-50 w-full border-b border-site-rule bg-site-bg/95 backdrop-blur-sm"
+    >
+      <div className="mx-auto max-w-[920px] px-6">
+        <div className="flex h-16 items-center justify-between gap-4">
+          <Link
+            to="/"
+            className="inline-flex min-h-[44px] items-center font-mono text-sm font-medium text-site-fg hover:text-site-accent transition-colors"
+          >
+            <span className="hidden text-site-muted sm:inline">saidjamol</span>
+            <span className="mx-1.5 hidden text-site-muted sm:inline">/</span>
+            ikramov.me
+          </Link>
 
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-2">
-              <Link
-                to="/"
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/')
-                    ? 'bg-github-accent-emphasis text-white'
-                    : 'text-github-fg-default dark:text-github-fg-dark hover:text-github-accent-emphasis'
-                }`}
-              >
-                {t.nav.home}
-              </Link>
-              <button
-                onClick={() => scrollToSection('experience')}
-                className="text-github-fg-default dark:text-github-fg-dark hover:text-github-accent-emphasis px-4 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                {t.nav.experience}
-              </button>
-              <Link
-                to="/blog"
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/blog')
-                    ? 'bg-github-accent-emphasis text-white'
-                    : 'text-github-fg-default dark:text-github-fg-dark hover:text-github-accent-emphasis'
-                }`}
-              >
-                {t.nav.blog}
-              </Link>
-            </div>
-          </div>
+          <div className="hidden items-center gap-7 md:flex">{items}</div>
 
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark rounded-md p-1">
+          <div className="flex items-center gap-2">
+            <div className={`flex items-center gap-0.5 p-1 ${controlClass}`}>
               {(['en', 'ru', 'uz'] as Language[]).map((lang) => (
                 <button
                   key={lang}
+                  type="button"
                   onClick={() => setLanguage(lang)}
-                  className={`px-2 py-1 text-xs font-medium rounded transition-all ${
+                  aria-pressed={language === lang}
+                  className={`rounded px-2 py-1 font-mono text-xs font-medium transition-colors ${
                     language === lang
-                      ? 'bg-github-accent-emphasis text-white'
-                      : 'text-github-fg-muted dark:text-github-fg-dark-muted hover:text-github-fg-default dark:hover:text-github-fg-dark'
+                      ? 'bg-site-fg text-site-bg'
+                      : 'text-site-muted hover:text-site-fg'
                   }`}
                 >
                   {lang.toUpperCase()}
@@ -88,33 +86,35 @@ export const Navigation = () => {
             </div>
 
             <button
+              type="button"
               onClick={toggleTheme}
-              className="p-2 rounded-md bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className={`p-2 ${controlClass}`}
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               )}
             </button>
 
-            {/* Mobile menu button */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-md bg-github-canvas-subtle dark:bg-github-canvas-dark-subtle border border-github-border-default dark:border-github-border-dark hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              aria-label="Toggle mobile menu"
+              className={`p-2 md:hidden ${controlClass}`}
+              aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -122,41 +122,7 @@ export const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col space-y-2">
-              <Link
-                to="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/')
-                    ? 'bg-github-accent-emphasis text-white'
-                    : 'text-github-fg-default dark:text-github-fg-dark hover:text-github-accent-emphasis hover:bg-github-canvas-subtle dark:hover:bg-github-canvas-dark-subtle'
-                }`}
-              >
-                {t.nav.home}
-              </Link>
-              <button
-                onClick={() => scrollToSection('experience')}
-                className="text-left px-4 py-2 rounded-md text-sm font-medium text-github-fg-default dark:text-github-fg-dark hover:text-github-accent-emphasis hover:bg-github-canvas-subtle dark:hover:bg-github-canvas-dark-subtle transition-colors"
-              >
-                {t.nav.experience}
-              </button>
-              <Link
-                to="/blog"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/blog')
-                    ? 'bg-github-accent-emphasis text-white'
-                    : 'text-github-fg-default dark:text-github-fg-dark hover:text-github-accent-emphasis hover:bg-github-canvas-subtle dark:hover:bg-github-canvas-dark-subtle'
-                }`}
-              >
-                {t.nav.blog}
-              </Link>
-            </div>
-          </div>
-        )}
+        {mobileMenuOpen && <div className="flex flex-col items-start pb-3 md:hidden">{items}</div>}
       </div>
     </nav>
   );

@@ -1,6 +1,10 @@
 {
   "case-studies": [
     {
+      "id": "leads-to-redis",
+      "title": "Moving 45,000 Live Leads from Memory to Redis"
+    },
+    {
       "id": "trading-platform",
       "title": "Stock Trading Platform"
     },
@@ -11,6 +15,10 @@
     {
       "id": "automotive-erp",
       "title": "Automotive ERP System"
+    },
+    {
+      "id": "live-call-routing",
+      "title": "Routing a Live Phone Call to the Right Contractor"
     }
   ],
   "architecture": [

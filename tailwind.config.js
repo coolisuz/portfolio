@@ -8,7 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // GitHub-inspired color palette
+        // Site palette. Values are RGB channels set in src/index.css so they
+        // switch with the theme and still accept opacity modifiers.
+        site: {
+          bg: 'rgb(var(--site-bg) / <alpha-value>)',
+          fg: 'rgb(var(--site-fg) / <alpha-value>)',
+          muted: 'rgb(var(--site-muted) / <alpha-value>)',
+          rule: 'rgb(var(--site-rule) / <alpha-value>)',
+          wash: 'rgb(var(--site-wash) / <alpha-value>)',
+          accent: 'rgb(var(--site-accent) / <alpha-value>)',
+        },
+        // GitHub-inspired color palette (blog pages)
         github: {
           canvas: {
             default: '#ffffff',
@@ -46,8 +56,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-        mono: ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace'],
+        sans: ['"IBM Plex Sans"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace'],
       },
     },
   },
