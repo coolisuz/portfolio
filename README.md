@@ -5,7 +5,7 @@
 ![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![License](https://img.shields.io/badge/License-All_Rights_Reserved-red?style=for-the-badge)
-![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/Deployed_on-GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)
 
 A place to know a bit more about me and my work — and where I occasionally jot down articles and notes on software engineering.
 
@@ -26,7 +26,7 @@ A place to know a bit more about me and my work — and where I occasionally jot
 - **Styling**: Tailwind CSS
 - **Routing**: React Router
 - **Markdown**: react-markdown with syntax highlighting
-- **Deployment**: Vercel
+- **Deployment**: GitHub Pages (auto-deploys on push to `main`)
 
 ## Development
 
